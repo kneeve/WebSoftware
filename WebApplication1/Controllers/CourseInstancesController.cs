@@ -21,6 +21,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EFGetStarted.AspNetCore.NewDb.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Collections;
 /// <summary>
 /// Auto generated controller
 /// </summary>
@@ -37,6 +38,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: CourseInstances
+        [Authorize(Roles ="Chair")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Courses.ToListAsync());
@@ -172,6 +174,17 @@ namespace WebApplication1.Controllers
             string user = User.Identity.Name;
             var courseInstances = _context.Courses.Where(m => m.InstructorEmail == user);
             return View(courseInstances);
+        }
+
+        public IActionResult CourseLearningOutcomes(int id)
+        {
+            //CourseInstance courseModel = new CourseInstance();
+            //courseModel.LOs = _context.Courses.Where(c => c.CourseInstanceID == id).Select(m => m.LOs);
+            //IEnumerable LOs = _context.Courses.Select(m => m.LOs).ToList();
+            //var courseInstance = _context.Courses.FindAsync(id);
+            var courseInstance = _context.Descriptions
+                .Where(m => m.CourseInstanceID == id).ToList();
+            return View(courseInstance);
         }
 
         private bool CourseInstanceExists(int id)

@@ -25,7 +25,7 @@ using System.Collections;
 
 namespace WebApplication1.Controllers
 {
-    [Authorize(Roles = "Admin, Inst5ructor")]
+    [Authorize(Roles = "Admin, Instructor")]
     public class LearningOutcomesController : Controller
     {
         private readonly CourseContext _context;
