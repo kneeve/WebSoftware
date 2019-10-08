@@ -1,8 +1,7 @@
-Author:    Kaelin Hoang
-Partner:   None
-Date:      9/27/2019
+Author:    Kaelin Hoang and Khanhly Nguyen
+Date:      10/8/2019
 Course:    CS 4540, Web Software Architecture
-Copyright: CS 4540 and Kaelin Hoang - This work may not be copied for use in Academic Coursework.
+Copyright: CS 4540, Kaelin Hoang, Khanhly Nguyen - This work may not be copied for use in Academic Coursework.
 
 
 Comment to Evaluators:
@@ -40,4 +39,4 @@ Consulted Piazza (classmates) and teaching assistants for additional questions.
 
 
 Code Citations:
-1. https://stackoverflow.com/questions/35539491/list-of-user-roles-in-view-using-asp-net-mvc-6 : Get list of users and their associated roles.
+1. https://stackoverflow.com/questions/39289765/whats-the-common-practice-of-gitignore-for-aspnet-core-project: .gitignore citation

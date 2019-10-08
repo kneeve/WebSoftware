@@ -30,6 +30,7 @@ namespace EFGetStarted.AspNetCore.NewDb.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public int CourseInstanceID { get; set; }
+        public LearningOutcomeNoteModel Note { get; set; }
 
         public CourseInstance Course { get; set; }
     }

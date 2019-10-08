@@ -33,6 +33,7 @@ namespace EFGetStarted.AspNetCore.NewDb.Models
         public int Year { get; set; }
         public string Description { get; set; }
         public string InstructorEmail { get; set; }
+        public CourseNoteModel Note { get; set; }
         public virtual ICollection<LearningOutcomes> LOs { get; set; }
     }
 }

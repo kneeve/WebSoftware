@@ -31,12 +31,14 @@ namespace EFGetStarted.AspNetCore.NewDb.Models
         { }
 
         public DbSet<CourseInstance> Courses { get; set; }
+        public DbSet<CourseNoteModel> CourseNotes { get; set; }
 
         /// <summary>
         /// Descriptions = Learning Outcomes because while recreating the databases, the name was copy and pasted over
         /// from a previous solution and never got changed before rescaffolding.
         /// </summary>
         public DbSet<LearningOutcomes> Descriptions { get; set; } 
+        public DbSet<LearningOutcomeNoteModel> LearningOutcomeNotes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,6 +46,8 @@ namespace EFGetStarted.AspNetCore.NewDb.Models
             .HasKey(c => c.CourseInstanceID);
             modelBuilder.Entity<LearningOutcomes>()
                 .HasKey(c => c.LearningOutcomesID);
+            modelBuilder.Entity<CourseNoteModel>().HasKey(c => c.CourseNoteID);
+            modelBuilder.Entity<LearningOutcomeNoteModel>().HasKey(c => c.LearningOutcomeNoteID);
             modelBuilder.Entity<CourseInstance>().ToTable("Courses");
             modelBuilder.Entity<LearningOutcomes>().ToTable("LearningOutcomes");
         }

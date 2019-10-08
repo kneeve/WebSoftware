@@ -49,37 +49,37 @@
 					</td>
 					@if (role.Equals("Admin"))
 					{
-						<td>
-							+
-						</td>
+					<td class="role">
+						+
+					</td>
 					}
 					else
 					{
-						<td>
+						<td class="role">
 							-
 						</td>
 					}
 					@if (role.Equals("Instructor"))
 					{
-						<td>
+						<td class="role">
 							+
 						</td>
 					}
 					else
 					{
-						<td>
+						<td class="role">
 							-
 						</td>
 					}
 					@if (role.Equals("Chair"))
 					{
-						<td>
+						<td class="role">
 							+
 						</td>
 					}
 					else
 					{
-						<td>
+						<td class="role">
 							-
 						</td>
 					}
@@ -89,5 +89,6 @@
 		}
 	</tbody>
 </table>
+<script src="~/js/site.js" asp-append-version="true"></script>
 
 
