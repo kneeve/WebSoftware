@@ -1,0 +1,60 @@
+﻿<!--
+  Author:    Kaelin Hoang
+  Partner:   None
+  Date:      9/13/2019
+  Course:    CS 4540, University of Utah, School of Computing
+  Copyright: CS 4540 and Kaelin Hoang - This work may not be copied for use in Academic Coursework.
+
+  I, Kaelin Hoang, certify that I wrote this code from scratch and did not copy it in part or whole from
+  another source.  Any references used in the completion of the assignment are cited in my README file.
+
+  File Contents
+
+	 Department view displays the progress for "fake" courses in terms of their LO progress.
+-->
+@{
+	ViewData["Title"] = "Department";
+}
+<!-- Credit given to https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_progressbar_round -->
+<!-- Credit also given to https://www.w3schools.com/bootstrap4/bootstrap_progressbars.asp-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="~/css/site.css" />
+<div class="w3-main" style="margin-left:40px;margin-right:340px">
+
+	<!-- Header -->
+	<div class="w3-container" style="margin-top:80px" id="showcase">
+		<h1 class="w3-xxxlarge w3-text-red"><b>Course Progress</b></h1>
+		<hr style="width:200px;border:2px solid red" class="w3-round">
+	</div>
+</div>
+
+<!-- Body of the page. Contains progress bars for mock classes.-->
+<div>
+	<br />
+	<h3><a asp-area="" asp-controller="Home" asp-action="Professor">CS 1410</a></h3>
+	<div class="progress w3-round-xlarge">
+		<div class="progress-bar progress-bar-striped progress-bar-animated w3-round-xlarge bg-danger" role="progressbar" aria-valuenow="40"
+			 aria-valuemin="0" aria-valuemax="100" style="width:40%">
+			40% Complete
+		</div>
+	</div>
+	<br />
+	<h3><a asp-area="" asp-controller="Home" asp-action="Professor">CS 2420</a></h3>
+	<div class="progress w3-round-xlarge">
+		<div class="progress-bar progress-bar-striped progress-bar-animated w3-round-xlarge bg-danger" role="progressbar" aria-valuenow="77"
+			 aria-valuemin="0" aria-valuemax="100" style="width:77%">
+			77% Complete
+		</div>
+	</div>
+	<br />
+
+	<h3><a asp-area="" asp-controller="Home" asp-action="Professor">CS 4150</a></h3>
+	<div class="progress w3-round-xlarge">
+		<div class="progress-bar progress-bar-striped progress-bar-animated w3-round-xlarge bg-danger" role="progressbar" aria-valuenow="32"
+			 aria-valuemin="0" aria-valuemax="100" style="width:32%">
+			32% Complete
+		</div>
+	</div>
+
+</div>

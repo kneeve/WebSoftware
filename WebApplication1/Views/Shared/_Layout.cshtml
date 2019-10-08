@@ -1,0 +1,105 @@
+﻿<!--
+  Author:    Kaelin Hoang
+  Partner:   None
+  Date:      9/13/2019
+  Course:    CS 4540, University of Utah, School of Computing
+  Copyright: CS 4540 and Kaelin Hoang - This work may not be copied for use in Academic Coursework.
+
+  I, Kaelin Hoang, certify that I wrote this code from scratch and did not copy it in part or whole from
+  another source.  Any references used in the completion of the assignment are cited in my README file.
+
+  File Contents
+
+	 This page specifies main layout of the lo webpage for the school of computing
+-->
+
+<!DOCTYPE html>
+<html>
+<title>Learning Outcomes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Learning Outcomes</title>
+
+	<environment include="Development">
+		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+	</environment>
+	<environment exclude="Development">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+			  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+			  crossorigin="anonymous"
+			  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+	</environment>
+	<link rel="stylesheet" href="~/css/site.css" />
+	<meta name="description" content="Layout for SoC Learning Objectives web page">
+	<meta name="keywords" content="HTML,CSS">
+	<meta name="author" content="Kaelin Hoang">
+</head>
+<body>
+	<header>
+		<!-- Sidebar/menu -->
+		<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+			<br>
+			<a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+			<div class="w3-container">
+				<h3 class="w3-padding-64"><b>Learning<br>Outcomes</b></h3>
+			</div>
+			<hr style="width:70px;border:2px solid white" class="w3-round">
+			<div class="w3-bar-block">
+				<!-- Side bar menu links -->
+				<a class="w3-bar-item w3-button w3-hover-white" onclick="w3_close()" asp-area="" asp-controller="Home" asp-action="Home">Home</a>
+				<a class="w3-bar-item w3-button w3-hover-white" onclick="w3_close()" asp-area="" asp-controller="Home" asp-action="Department">Department Chair</a>
+				<a class="w3-bar-item w3-button w3-hover-white" onclick="w3_close()" asp-area="" asp-controller="CourseInstances" asp-action="Index">Courses</a>
+				<a class="w3-bar-item w3-button w3-hover-white" onclick="w3_close()" asp-area="" asp-controller="Home" asp-action="Professor">Professor</a>
+				<a class="w3-bar-item w3-button w3-hover-white" onclick="w3_close()" asp-area="" asp-controller="LearningOutcomes" asp-action="Index">Curriculum Definer</a>
+				<hr style="width:70px;border:2px solid white" class="w3-round">
+				<button class="w3-bar-item w3-button"><partial name="_LoginPartial" /></button>
+				@*<div class="w3-dropdown-hover">
+					 User information
+					<div class="w3-dropdown-content w3-bar-block w3-card-4">
+						<a class="w3-bar-item w3-button w3-hover-white"><partial name="" /></a>
+						<a class="w3-bar-item w3-button w3-hover-white" onclick="w3_close()" asp-area="" asp-controller="Home" asp-action="User">Settings</a>
+						<a class="w3-bar-item w3-button w3-hover-white">Log Out</a>
+					</div>
+				</div>*@
+			</div>
+
+		</nav>
+
+	</header>
+	<div class="container">
+		<partial name="_CookieConsentPartial" />
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<environment include="Development">
+		<script src="~/lib/jquery/dist/jquery.js"></script>
+		<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+	</environment>
+	<environment exclude="Development">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+				asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+				asp-fallback-test="window.jQuery"
+				crossorigin="anonymous"
+				integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+		</script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+				asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+				asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+				crossorigin="anonymous"
+				integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+		</script>
+	</environment>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+	@RenderSection("Scripts", required: false)
+</body>
+</html>

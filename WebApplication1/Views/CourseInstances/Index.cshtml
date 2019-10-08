@@ -1,0 +1,83 @@
+﻿<!--
+  Author:    Kaelin Hoang
+  Partner:   None
+  Date:      9/13/2019
+  Course:    CS 4540, University of Utah, School of Computing
+  Copyright: CS 4540 and Kaelin Hoang - This work may not be copied for use in Academic Coursework.
+
+  I, Kaelin Hoang, certify that I wrote this code from scratch and did not copy it in part or whole from
+  another source.  Any references used in the completion of the assignment are cited in my README file.
+
+  File Contents
+
+	 Main view for the course instance DB
+-->
+@model IEnumerable<EFGetStarted.AspNetCore.NewDb.Models.CourseInstance>
+
+@{
+	ViewData["Title"] = "Courses";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+<div class="w3-main" style="margin-left:40px;margin-right:340px">
+
+	<!-- Header -->
+	<div class="w3-container" style="margin-top:80px" id="showcase">
+		<h1 class="w3-xxxlarge w3-text-red"><b>Courses</b></h1>
+		<hr style="width:200px;border:2px solid red" class="w3-round">
+	</div>
+</div>
+
+<p>
+	<a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Dept)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Number)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Semester)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Year)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Description)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Dept)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Number)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Semester)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Year)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Description)
+				</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.CourseInstanceID">Edit</a> |
+					<a asp-action="Details" asp-route-id="@item.CourseInstanceID">Details</a> |
+					<a asp-action="Delete" asp-route-id="@item.CourseInstanceID">Delete</a> |
+					<a asp-action="CSharpPage" asp-route-id="@item.CourseInstanceID">c#</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

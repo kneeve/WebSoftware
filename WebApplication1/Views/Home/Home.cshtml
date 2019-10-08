@@ -1,0 +1,90 @@
+﻿<!--
+  Author:    Kaelin Hoang
+  Partner:   None
+  Date:      9/13/2019
+  Course:    CS 4540, University of Utah, School of Computing
+  Copyright: CS 4540 and Kaelin Hoang - This work may not be copied for use in Academic Coursework.
+
+  I, Kaelin Hoang, certify that I wrote this code from scratch and did not copy it in part or whole from
+  another source.  Any references used in the completion of the assignment are cited in my README file.
+
+  File Contents
+
+	 Home displays the quick links to the learning objectives and course view page. It also has a display of the department progress on learning outcoms.
+-->
+@{
+	ViewData["Title"] = "Home";
+}
+
+<!-- Credit to template from https://www.w3schools.com/w3css/w3css_templates.asp
+	Information changed for purpose of the webpage-->
+<link rel="stylesheet" href="~/css/site.css" />
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+	<!-- Header -->
+	<div class="w3-container" style="margin-top:80px" id="showcase">
+		<h1 class="w3-jumbo"><b>University of Utah</b></h1>
+		<h1 class="w3-xxxlarge w3-text-red"><b>Learning Outcomes</b></h1>
+		<hr style="width:50px;border:5px solid red" class="w3-round">
+	</div>
+	<p class="w3-opacity">Welcome to the School of Computing's Learning Outcome tracker.</p>
+	<p>Click on links below or use the side menu to find the view you are looking for.</p>
+
+	<!-- Links to various views of the database-->
+	<div class="w3-container" id="services" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-red"><b>Quick Links</b></h1>
+		<hr style="width:50px;border:5px solid red" class="w3-round">
+
+		<div class="class1">
+			<h1>Chair</h1>
+			<p><a asp-area="" asp-controller="CourseInstances" asp-action="Index">View Courses</a></p>
+
+		</div>
+		<div class="class2">
+			<h1>Admin</h1>
+			<p><a asp-area="" asp-controller="LearningOutcomes" asp-action="Index">Learning Outcomes</a></p>
+			<p><a asp-area="" asp-controller="Home" asp-action="RoleChange">See all users</a></p>
+		</div>
+		<div class="class3">
+			<h1>Instructor</h1>
+			<p><a asp-area="" asp-controller="CourseInstances" asp-action="MyCourses">View My Courses</a></p>
+		</div>
+	</div>
+
+	<!-- Credit given to https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_progressbar_round -->
+	<!-- Credit also given to https://www.w3schools.com/bootstrap4/bootstrap_progressbars.asp -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<div class="w3-container" id="services" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-red"><b>Course Progress</b></h1>
+		<hr style="width:50px;border:5px solid red" class="w3-round">
+		<h3><a asp-area="" asp-controller="CourseInstances" asp-action="Index">CS 1410</a></h3>
+		<div class="progress w3-round-xlarge">
+			<div class="progress-bar progress-bar-striped progress-bar-animated w3-round-xlarge bg-danger" role="progressbar" aria-valuenow="40"
+				 aria-valuemin="0" aria-valuemax="100" style="width:40%">
+				40% Complete
+			</div>
+		</div>
+		<br />
+		<h3><a asp-area="" asp-controller="CourseInstances" asp-action="Index">CS 2420</a></h3>
+		<div class="progress w3-round-xlarge">
+			<div class="progress-bar progress-bar-striped progress-bar-animated w3-round-xlarge bg-danger" role="progressbar" aria-valuenow="77"
+				 aria-valuemin="0" aria-valuemax="100" style="width:77%">
+				77% Complete
+			</div>
+		</div>
+		<br />
+
+		<h3><a asp-area="" asp-controller="CourseInstances" asp-action="Index">CS 4150</a></h3>
+		<div class="progress w3-round-xlarge">
+			<div class="progress-bar progress-bar-striped progress-bar-animated w3-round-xlarge bg-danger" role="progressbar" aria-valuenow="32"
+				 aria-valuemin="0" aria-valuemax="100" style="width:32%">
+				32% Complete
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+
