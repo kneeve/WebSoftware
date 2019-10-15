@@ -11,6 +11,8 @@ $('.role').click(function () {
 	}
 });
 
+$.ajax
+
 $.ajax({
 	url: "~\Controllers\LearningOutcomesController.cs",
 	method: "POST"
