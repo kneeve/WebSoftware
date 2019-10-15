@@ -10,85 +10,90 @@
 
   File Contents
 
-	 Shows the RoleChange page with users and their associated roles.
+     Shows the RoleChange page with users and their associated roles.
 -->
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<IdentityUser> UserManager
 @{
-	ViewData["Title"] = "RoleChange";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "RoleChange";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="~/css/site.css">
 
 <h1>RoleChange</h1>
 <table class="table">
-	<thead>
-		<tr>
-			<th>
-				User Email
-			</th>
-			<th>
-				Admin
-			</th>
-			<th>
-				Instructor
-			</th>
-			<th>
-				Chair
-			</th>
-		</tr>
-	</thead>
-	<tbody>
+    <thead>
+        <tr>
+            <th>
+                User Email
+            </th>
+            <th>
+                Admin
+            </th>
+            <th>
+                Instructor
+            </th>
+            <th>
+                Chair
+            </th>
+        </tr>
+    </thead>
+    <tbody>
 
-		@foreach (var u in UserManager.Users)
-		{
-			foreach (var role in await UserManager.GetRolesAsync(u))
-			{
-				<tr>
-					<td>
-						@u.Email
-					</td>
-					@if (role.Equals("Admin"))
-					{
-					<td class="role">
-						+
-					</td>
-					}
-					else
-					{
-						<td class="role">
-							-
-						</td>
-					}
-					@if (role.Equals("Instructor"))
-					{
-						<td class="role">
-							+
-						</td>
-					}
-					else
-					{
-						<td class="role">
-							-
-						</td>
-					}
-					@if (role.Equals("Chair"))
-					{
-						<td class="role">
-							+
-						</td>
-					}
-					else
-					{
-						<td class="role">
-							-
-						</td>
-					}
-				</tr>
+        @foreach (var u in UserManager.Users)
+        {
+            foreach (var role in await UserManager.GetRolesAsync(u))
+            {
+                <tr>
+                    <td>
+                        @u.Email
+                    </td>
+                    @if (role.Equals("Admin"))
+                    {
+                        <td class="role">
+                            +
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="role">
+                            -
+                        </td>
+                    }
+                    @if (role.Equals("Instructor"))
+                    {
+                        <td class="role">
+                            +
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="role">
+                            -
+                        </td>
+                    }
+                    @if (role.Equals("Chair"))
+                    {
+                        <td class="role">
+                            +
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="role">
+                            -
+                        </td>
+                    }
+                </tr>
 
-			}
-		}
-	</tbody>
+            }
+        }
+    </tbody>
 </table>
 <script src="~/js/site.js" asp-append-version="true"></script>
+</html>
+
 
 

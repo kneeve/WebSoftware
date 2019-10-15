@@ -81,6 +81,10 @@ body {
 	cursor: pointer
 }
 
-	.w3-half img:hover {
-		opacity: 1
-	}
+.w3-half img:hover {
+	opacity: 1
+}
+
+.role {
+    cursor: pointer;
+}
