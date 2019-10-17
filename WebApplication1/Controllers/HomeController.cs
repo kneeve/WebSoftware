@@ -29,11 +29,13 @@ namespace WebApplication1.Controllers
     public class HomeController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
-        public HomeController(UserManager<IdentityUser> userManager)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public HomeController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
-
+            _roleManager = roleManager;
         }
+       
 
         [AllowAnonymous]
         public IActionResult Index()

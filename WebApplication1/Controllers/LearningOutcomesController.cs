@@ -22,6 +22,8 @@ using Microsoft.EntityFrameworkCore;
 using EFGetStarted.AspNetCore.NewDb.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace WebApplication1.Controllers
 {
@@ -29,7 +31,7 @@ namespace WebApplication1.Controllers
     public class LearningOutcomesController : Controller
     {
         private readonly CourseContext _context;
-
+        
         public LearningOutcomesController(CourseContext context)
         {
             _context = context;

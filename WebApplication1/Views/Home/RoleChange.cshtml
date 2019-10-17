@@ -14,6 +14,7 @@
 -->
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
 @{
     ViewData["Title"] = "RoleChange";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -41,48 +42,52 @@
         </tr>
     </thead>
     <tbody>
-
+		<h1 onclick="changeText(this)">Click on this text</h1>
         @foreach (var u in UserManager.Users)
-        {
-            foreach (var role in await UserManager.GetRolesAsync(u))
-            {
+		{
+			foreach (var role in await UserManager.GetRolesAsync(u))
+			{
+				string id = u.Email.Replace("@", "");
+				string admin = "Admin";
+				string instructor = "Instructor";
+				string chair = "Chair";
                 <tr>
-                    <td>
+                    <td id=@id>
                         @u.Email
                     </td>
                     @if (role.Equals("Admin"))
                     {
-                        <td class="role">
+                        <td onclick="handleChange(this,'@id', '@u.Email', '@admin')" class="clickable">
                             +
                         </td>
                     }
                     else
                     {
-                        <td class="role">
+                        <td onclick="handleChange(this,'@id', '@u.Email', '@admin')" class="clickable">
                             -
                         </td>
                     }
                     @if (role.Equals("Instructor"))
                     {
-                        <td class="role">
+                        <td onclick="handleChange(this,'@id', '@u.Email', '@instructor')" class="clickable">
                             +
                         </td>
                     }
                     else
                     {
-                        <td class="role">
+                        <td onclick="handleChange(this,'@id', '@u.Email', '@instructor')" class="clickable">
                             -
                         </td>
                     }
                     @if (role.Equals("Chair"))
                     {
-                        <td class="role">
+                        <td onclick="handleChange(this,'@id', '@u.Email', '@chair')" class="clickable">
                             +
                         </td>
                     }
                     else
                     {
-                        <td class="role">
+                        <td onclick="handleChange(this,'@id', '@u.Email', '@chair')" class="clickable">
                             -
                         </td>
                     }

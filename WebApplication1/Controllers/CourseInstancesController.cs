@@ -178,13 +178,15 @@ namespace WebApplication1.Controllers
 
         public IActionResult CourseLearningOutcomes(int id)
         {
-            //CourseInstance courseModel = new CourseInstance();
-            //courseModel.LOs = _context.Courses.Where(c => c.CourseInstanceID == id).Select(m => m.LOs);
-            //IEnumerable LOs = _context.Courses.Select(m => m.LOs).ToList();
-            //var courseInstance = _context.Courses.FindAsync(id);
             var courseInstance = _context.Descriptions
                 .Where(m => m.CourseInstanceID == id).ToList();
             return View(courseInstance);
+        }
+
+        [HttpPost]
+        public JsonResult ChangeNote(string note, int note_id)
+        {
+           return Json(new { success = true, note = "This is the new note", note_id = note_id });
         }
 
         private bool CourseInstanceExists(int id)

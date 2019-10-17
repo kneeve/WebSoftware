@@ -85,6 +85,6 @@ body {
 	opacity: 1
 }
 
-.role {
+.clickable {
     cursor: pointer;
 }

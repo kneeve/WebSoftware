@@ -2,18 +2,31 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-$('.role').click(function () {
-	if ($(this).text() == "+") {
-		$(this).text("-");
+function handleChange(a, id, email, role) {
+	alert(role);
+	var roleCheck = "";
+	if (a.innerText == "+") {
+		a.innerHTML = "-";
+		roleCheck = "remove";
 	}
 	else {
-		$(this).text("+");
+		a.innerHTML = "+";
+		roleCheck = "add";
 	}
-});
 
-$.ajax
+	$.ajax({
+		method: "POST",
+		url: "/Roles/AddRole",
+		data: {
+			user_name: email,
+			changeRole: role,
+			add_remove: roleCheck
+		}
+	});
+};
 
-$.ajax({
-	url: "~\Controllers\LearningOutcomesController.cs",
-	method: "POST"
-});
+
+
+function changeText(id) {
+	id.innerHTML = "ooops";
+}

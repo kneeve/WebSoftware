@@ -8,6 +8,19 @@
 
 <h1>Course Learning Outcomes</h1>
 
+<div style="border:3px solid blue">
+	@{ 
+		var note_id = -1;
+		var note = "";
+		
+	}
+	<form onsubmit="submit_note(event)" asp-action="ChangeNote" method="POST">
+		<textarea id="note" name="note" rows="10" cols="50"></textarea>
+		<br />
+		<input type="submit">
+	</form>
+</div>
+
 <table class="table">
 	<thead>
 		<tr>
@@ -23,15 +36,23 @@
 	<tbody>
 		@foreach (var item in Model)
 		{
-		<tr>
-			<td>
+			<tr>
+				<td>
 
-				@Html.DisplayFor(modelItem => item.Name)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Description)
-			</td>
-		</tr>
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Description)
+				</td>
+				<td>
+
+				</td>
+			</tr>
 		}
 	</tbody>
 </table>
+
+@section Scripts
+{
+	<script src="~/js/note.js"></script>
+}
