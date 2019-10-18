@@ -1,21 +1,29 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using EFGetStarted.AspNetCore.NewDb.Models
 @inject UserManager<IdentityUser> UserManager
-@model IEnumerable<EFGetStarted.AspNetCore.NewDb.Models.LearningOutcomes>
+@model CourseInstance
 @{
 	ViewData["Title"] = "CourseLearningOutcomes";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Course Learning Outcomes</h1>
+<h1>@Model.Dept @Model.Number Learning Outcomes</h1>
 
 <div style="border:3px solid blue">
 	@{ 
-		var note_id = -1;
 		var note = "";
-		
+		var id = -1;
+		if (Model.Note != null)
+		{
+			note = Model.Note.Note;
+			id = Model.Note.CourseNoteID;
+		}
+
 	}
-	<form onsubmit="submit_note(event)" asp-action="ChangeNote" method="POST">
-		<textarea id="note" name="note" rows="10" cols="50"></textarea>
+	<form onsubmit="submit_note(event, @id, @Model.CourseInstanceID)" asp-action="ChangeNote" method="POST">
+		<textarea id="note" name="note" rows="10" cols="50">
+			@note
+		</textarea>
 		<br />
 		<input type="submit">
 	</form>
@@ -34,7 +42,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach (var item in Model)
+		@foreach (var item in Model.LOs)
 		{
 			<tr>
 				<td>
@@ -54,5 +62,5 @@
 
 @section Scripts
 {
-	<script src="~/js/note.js"></script>
+	<script src="~/js/courseNote.js"></script>
 }

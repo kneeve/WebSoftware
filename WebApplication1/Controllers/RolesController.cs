@@ -22,7 +22,7 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public async void AddRole(string user_name, string changeRole, string add_remove)
+        public async Task AddRole(string user_name, string changeRole, string add_remove)
         {
             var user = await _userManager.FindByNameAsync(user_name);
             var role = await _roleManager.FindByNameAsync(changeRole);

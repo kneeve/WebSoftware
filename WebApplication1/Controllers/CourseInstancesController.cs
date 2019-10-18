@@ -176,17 +176,44 @@ namespace WebApplication1.Controllers
             return View(courseInstances);
         }
 
-        public IActionResult CourseLearningOutcomes(int id)
+        public async Task<IActionResult> CourseLearningOutcomes(int id)
         {
-            var courseInstance = _context.Descriptions
+            CourseInstance course = await _context.Courses.Include(o => o.Note)
+                .FirstOrDefaultAsync(m => m.CourseInstanceID == id);
+
+            var los = _context.Descriptions
                 .Where(m => m.CourseInstanceID == id).ToList();
-            return View(courseInstance);
+            course.LOs = los;
+
+            return View(course);
         }
 
         [HttpPost]
-        public JsonResult ChangeNote(string note, int note_id)
+        public JsonResult ChangeNote(string note, int note_id, int course_id)
         {
-           return Json(new { success = true, note = "This is the new note", note_id = note_id });
+            var db_note = _context.CourseNotes.Find(note_id);
+
+            if (db_note == null)
+            {
+                CourseNoteModel courseNote = new CourseNoteModel();
+                courseNote.Note = note;
+                courseNote.CourseInstanceID = course_id;
+                _context.Add(courseNote);
+            }
+            else
+            {
+                db_note.Note = note;
+            }
+
+            _context.SaveChanges();
+
+           return Json(
+               new
+               {
+                   success = true,
+                   note = note,
+                   note_id = note_id
+               });
         }
 
         private bool CourseInstanceExists(int id)
