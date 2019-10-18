@@ -42,58 +42,50 @@
         </tr>
     </thead>
     <tbody>
-		<h1 onclick="changeText(this)">Click on this text</h1>
+        <h1 onclick="changeText(this)">Click on this text</h1>
         @foreach (var u in UserManager.Users)
-		{
-			foreach (var role in await UserManager.GetRolesAsync(u))
-			{
-				string id = u.Email.Replace("@", "");
-				string admin = "Admin";
-				string instructor = "Instructor";
-				string chair = "Chair";
-                <tr>
-                    <td id=@id>
-                        @u.Email
-                    </td>
-                    @if (role.Equals("Admin"))
-                    {
-                        <td onclick="handleChange(this,'@id', '@u.Email', '@admin')" class="clickable">
-                            +
-                        </td>
-                    }
-                    else
-                    {
-                        <td onclick="handleChange(this,'@id', '@u.Email', '@admin')" class="clickable">
-                            -
-                        </td>
-                    }
-                    @if (role.Equals("Instructor"))
-                    {
-                        <td onclick="handleChange(this,'@id', '@u.Email', '@instructor')" class="clickable">
-                            +
-                        </td>
-                    }
-                    else
-                    {
-                        <td onclick="handleChange(this,'@id', '@u.Email', '@instructor')" class="clickable">
-                            -
-                        </td>
-                    }
-                    @if (role.Equals("Chair"))
-                    {
-                        <td onclick="handleChange(this,'@id', '@u.Email', '@chair')" class="clickable">
-                            +
-                        </td>
-                    }
-                    else
-                    {
-                        <td onclick="handleChange(this,'@id', '@u.Email', '@chair')" class="clickable">
-                            -
-                        </td>
-                    }
-                </tr>
+        {
+            string id = u.Email.Replace("@", "");
+            string admin = "Admin";
+            string instructor = "Instructor";
+            string chair = "Chair";
+            var roles = UserManager.GetRolesAsync(u);
+            string a = "-";
+            string i = "-";
+            string c = "-";
 
+    <tr>
+        <td id=@id>
+            @u.Email
+        </td>
+
+            @foreach (var role in await roles)
+            {
+                @if (role.Equals("Admin"))
+                {
+                    a = "+";
+                }
+                @if (role.Equals("Instructor"))
+                {
+                    i = "+";
+                }
+                @if (role.Equals("Chair"))
+                {
+                    c = "+";
+                }
             }
+
+        <td onclick="handleChange(this,'@id', '@u.Email', '@admin')" class="clickable">
+            @a
+        </td>
+        <td onclick="handleChange(this,'@id', '@u.Email', '@instructor')" class="clickable">
+            @i
+        </td>
+        <td onclick="handleChange(this,'@id', '@u.Email', '@chair')" class="clickable">
+            @c
+        </td>
+    </tr>
+
         }
     </tbody>
 </table>

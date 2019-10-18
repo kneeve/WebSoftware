@@ -54,6 +54,10 @@ namespace WebApplication1.Controllers
 
             var courseInstance = await _context.Courses
                 .FirstOrDefaultAsync(m => m.CourseInstanceID == id);
+            var note = await _context.CourseNotes
+                .FirstOrDefaultAsync(m => m.CourseInstanceID == id);
+
+            courseInstance.Note = note;
             if (courseInstance == null)
             {
                 return NotFound();
@@ -61,7 +65,6 @@ namespace WebApplication1.Controllers
 
             return View(courseInstance);
         }
-
 
         // GET: CourseInstances/Create
         public IActionResult Create()
@@ -186,7 +189,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public JsonResult ChangeNote(string note, int note_id)
         {
-           return Json(new { success = true, note = "This is the new note", note_id = note_id });
+           return Json(new { success = true });
         }
 
         private bool CourseInstanceExists(int id)
