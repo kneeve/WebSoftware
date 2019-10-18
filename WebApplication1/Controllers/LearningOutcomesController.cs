@@ -166,6 +166,42 @@ namespace WebApplication1.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Queries LearningOutcomeNotes based on given id. If it is found, then the note is updated.
+        /// If no note is found, the note is created and entered into the database.
+        /// </summary>
+        /// <param name="note"></param>
+        /// <param name="note_id"></param>
+        /// <param name="course_id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public JsonResult ChangeNote(string note, int note_id, int lo_id)
+        {
+            var db_note = _context.LearningOutcomeNotes.Find(note_id);
+
+            if (db_note == null)
+            {
+                LearningOutcomeNoteModel loNote = new LearningOutcomeNoteModel();
+                loNote.Note = note;
+                loNote.LearningOutcomesID = lo_id;
+                _context.Add(loNote);
+            }
+            else
+            {
+                db_note.Note = note;
+            }
+
+            _context.SaveChanges();
+
+            return Json(
+                new
+                {
+                    success = true,
+                    note = note,
+                    note_id = note_id
+                });
+        }
+
         private bool LearningOutcomesExists(int id)
         {
             return _context.Descriptions.Any(e => e.LearningOutcomesID == id);

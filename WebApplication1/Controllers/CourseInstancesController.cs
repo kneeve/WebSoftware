@@ -176,18 +176,31 @@ namespace WebApplication1.Controllers
             return View(courseInstances);
         }
 
+        /// <summary>
+        /// Queries learning outcomes of a given course (from its id)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>course to corresponding view</returns>
         public async Task<IActionResult> CourseLearningOutcomes(int id)
         {
             CourseInstance course = await _context.Courses.Include(o => o.Note)
                 .FirstOrDefaultAsync(m => m.CourseInstanceID == id);
 
-            var los = _context.Descriptions
+            var los = _context.Descriptions.Include(o => o.Note)
                 .Where(m => m.CourseInstanceID == id).ToList();
             course.LOs = los;
 
             return View(course);
         }
 
+        /// <summary>
+        /// Queries CourseNotes based on given id. If it is found, then the note is updated.
+        /// If no note is found, the note is created and entered into the database.
+        /// </summary>
+        /// <param name="note"></param>
+        /// <param name="note_id"></param>
+        /// <param name="course_id"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult ChangeNote(string note, int note_id, int course_id)
         {

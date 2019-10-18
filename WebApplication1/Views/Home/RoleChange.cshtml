@@ -16,80 +16,81 @@
 @inject UserManager<IdentityUser> UserManager
 @inject RoleManager<IdentityRole> RoleManager
 @{
-    ViewData["Title"] = "RoleChange";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "RoleChange";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="~/css/site.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" />
 <h1>RoleChange</h1>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                User Email
-            </th>
-            <th>
-                Admin
-            </th>
-            <th>
-                Instructor
-            </th>
-            <th>
-                Chair
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <h1 onclick="changeText(this)">Click on this text</h1>
-        @foreach (var u in UserManager.Users)
-        {
-            string id = u.Email.Replace("@", "");
-            string admin = "Admin";
-            string instructor = "Instructor";
-            string chair = "Chair";
-            var roles = UserManager.GetRolesAsync(u);
-            string a = "-";
-            string i = "-";
-            string c = "-";
+	<thead>
+		<tr>
+			<th>
+				User Email
+			</th>
+			<th>
+				Admin
+			</th>
+			<th>
+				Instructor
+			</th>
+			<th>
+				Chair
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var u in UserManager.Users)
+		{
+			string id = u.Email.Replace("@", "");
+			string admin = "Admin";
+			string instructor = "Instructor";
+			string chair = "Chair";
+			var roles = UserManager.GetRolesAsync(u);
+			string a = "-";
+			string i = "-";
+			string c = "-";
 
-    <tr>
-        <td id=@id>
-            @u.Email
-        </td>
+			<tr>
+				<td id=@id>
+					@u.Email
+				</td>
 
-            @foreach (var role in await roles)
-            {
-                @if (role.Equals("Admin"))
-                {
-                    a = "+";
-                }
-                @if (role.Equals("Instructor"))
-                {
-                    i = "+";
-                }
-                @if (role.Equals("Chair"))
-                {
-                    c = "+";
-                }
-            }
+				@foreach (var role in await roles)
+				{
+					@if (role.Equals("Admin"))
+					{
+						a = "+";
+					}
+					@if (role.Equals("Instructor"))
+					{
+						i = "+";
+					}
+					@if (role.Equals("Chair"))
+					{
+						c = "+";
+					}
+				}
 
-        <td onclick="handleChange(this,'@id', '@u.Email', '@admin')" class="clickable">
-            @a
-        </td>
-        <td onclick="handleChange(this,'@id', '@u.Email', '@instructor')" class="clickable">
-            @i
-        </td>
-        <td onclick="handleChange(this,'@id', '@u.Email', '@chair')" class="clickable">
-            @c
-        </td>
-    </tr>
+				<td onclick="handleChange(this,'@id', '@u.Email', '@admin')" class="clickable">
+					@a
+				</td>
+				<td onclick="handleChange(this,'@id', '@u.Email', '@instructor')" class="clickable">
+					@i
+				</td>
+				<td onclick="handleChange(this,'@id', '@u.Email', '@chair')" class="clickable">
+					@c
+				</td>
+			</tr>
 
-        }
-    </tbody>
+		}
+	</tbody>
 </table>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
 </html>
 
 

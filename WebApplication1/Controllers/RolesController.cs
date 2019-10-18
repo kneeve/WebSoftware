@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,10 +23,13 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public async Task AddRole(string user_name, string changeRole, string add_remove)
+        public async Task<IActionResult> AddRole(string user_name, string changeRole, string add_remove)
         {
             var user = await _userManager.FindByNameAsync(user_name);
             var role = await _roleManager.FindByNameAsync(changeRole);
+            var admins = await _userManager.GetUsersInRoleAsync("Admin");
+            int numAdmins = ((IList)admins).Count;
+
             bool add = add_remove.Equals("add");
             if (add)
             {
@@ -33,8 +37,15 @@ namespace WebApplication1.Controllers
             }
             else
             {
+                if (changeRole.Equals("Admin") && numAdmins == 1)
+                {
+                    return Json(new { Success = false }); // TODO: Sending a fail back to ajax
+                }
+
                 await _userManager.RemoveFromRoleAsync(user, role.Name);
+                
             }
+            return Json(new { Success = true });
         }
     }
 }
