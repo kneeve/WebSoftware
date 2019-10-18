@@ -27,3 +27,4 @@ Code Citations:
 2. https://stackoverflow.com/questions/41192540/how-to-make-td-clickable: Toggle text implementation
 3. https://stackoverflow.com/questions/26357676/asp-net-identity-2-usermanager-get-all-users-async: Get users using usermanager
 4. https://stackoverflow.com/questions/45674776/how-to-get-role-name-for-user-in-asp-net-identity: Getting role names
+5: https://sweetalert2.github.io : Get sweet alerts when changing roles

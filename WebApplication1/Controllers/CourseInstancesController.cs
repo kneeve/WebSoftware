@@ -206,6 +206,7 @@ namespace WebApplication1.Controllers
         {
             var db_note = _context.CourseNotes.Find(note_id);
 
+            // If there wasn't a note already in the database, generate a new one
             if (db_note == null)
             {
                 CourseNoteModel courseNote = new CourseNoteModel();
@@ -228,6 +229,7 @@ namespace WebApplication1.Controllers
                    note_id = note_id
                });
         }
+
 
         private bool CourseInstanceExists(int id)
         {

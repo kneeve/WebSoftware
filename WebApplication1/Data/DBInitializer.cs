@@ -41,6 +41,7 @@ namespace WebApplication1.Data
                 return;   // DB has been seeded
             }
 
+            // Generates a sample course note for the first course in the table
             CourseNoteModel courseNote = new CourseNoteModel();
             courseNote.Note = "This course has a lot of learning outcomes";
 
@@ -68,8 +69,10 @@ namespace WebApplication1.Data
             int ID4400 = courses[4].CourseInstanceID;
             int ID35002 = courses[5].CourseInstanceID;
 
+            // Generates a sample learning outcome note for the first learning outcome.
             LearningOutcomeNoteModel loNote = new LearningOutcomeNoteModel();
             loNote.Note = "This learning outcome needs to be updated and reviewed again";
+
             // Create learning outcomes
             var lo = new LearningOutcomes[]
             {

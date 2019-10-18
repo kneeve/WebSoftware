@@ -179,6 +179,7 @@ namespace WebApplication1.Controllers
         {
             var db_note = _context.LearningOutcomeNotes.Find(note_id);
 
+            // If the learning outcome note doesn't already exist, generate a new one
             if (db_note == null)
             {
                 LearningOutcomeNoteModel loNote = new LearningOutcomeNoteModel();

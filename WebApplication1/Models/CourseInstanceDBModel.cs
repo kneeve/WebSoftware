@@ -18,6 +18,7 @@ using System.Linq;
 using System.Threading.Tasks;
 /// <summary>
 /// Kaelin Hoang | u0984462
+/// Khanhly Nguyen | u0822847
 /// </summary>
 namespace EFGetStarted.AspNetCore.NewDb.Models
 {
