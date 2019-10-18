@@ -17,11 +17,9 @@ function handleChange(a, id, email, role) {
 
 			var roleCheck = "";
 			if (a.innerText == "+") {
-				a.innerHTML = "-";
 				roleCheck = "remove";
 			}
 			else {
-				a.innerHTML = "+";
 				roleCheck = "add";
 			}
 
@@ -32,17 +30,26 @@ function handleChange(a, id, email, role) {
 					user_name: email,
 					changeRole: role,
 					add_remove: roleCheck
-				}
+				},
 			}).done(function (result) {
-				console.log("action taken:" + result);
-			}).fail(function (jqXHR, textStatus, errorThrown) {
-				console.log("failed:");
-				console.log(jqXHR);
-				console.log(textStatus);
-				console.log(errorThrown);
-			}).always(function () {
-				console.log("but I will always do this");
-			});
+				if (result.statusCode == 200) {
+					if (a.innerText == "+") {
+						a.innerHTML = "-";
+					}
+					else {
+						a.innerHTML = "+";
+					}
+				}
+				else
+				{
+					Swal.fire({
+						title: 'No!',
+						text: "Must have at least one admin",
+						type: 'error',
+						confirmButtonText: 'OK'
+					})
+				}
+			})
 		}
 	});
 };

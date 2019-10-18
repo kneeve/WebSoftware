@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,7 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AddRole(string user_name, string changeRole, string add_remove)
+        public async Task<HttpResponseMessage> AddRole(string user_name, string changeRole, string add_remove)
         {
             var user = await _userManager.FindByNameAsync(user_name);
             var role = await _roleManager.FindByNameAsync(changeRole);
@@ -34,18 +35,20 @@ namespace WebApplication1.Controllers
             if (add)
             {
                 await _userManager.AddToRoleAsync(user, role.Name);
+                return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             }
             else
             {
                 if (changeRole.Equals("Admin") && numAdmins == 1)
                 {
-                    return Json(new { Success = false }); // TODO: Sending a fail back to ajax
+                    return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest); // TODO: Sending a fail back to ajax
                 }
-
-                await _userManager.RemoveFromRoleAsync(user, role.Name);
-                
+                else
+                {
+                    await _userManager.RemoveFromRoleAsync(user, role.Name);
+                    return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+                }
             }
-            return Json(new { Success = true });
         }
     }
 }
