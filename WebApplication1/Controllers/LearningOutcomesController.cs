@@ -1,6 +1,6 @@
 ﻿/**
  * Author:    Kaelin Hoang
- * Partner:   None
+ * Partner:   Khanhly Nguyen
  * Date:      9/13/2019
  * Course:    CS 4540, University of Utah, School of Computing
  * Copyright: CS 4540 and Kaelin Hoang - This work may not be copied for use in Academic Coursework.

@@ -1,4 +1,4 @@
-﻿// Kaelin Hoang u0984462
+﻿// Kaelin Hoang and Khanhly Nguyen
 
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Options;

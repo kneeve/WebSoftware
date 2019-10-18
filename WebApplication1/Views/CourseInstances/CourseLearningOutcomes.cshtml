@@ -23,6 +23,8 @@
 		}
 
 	}
+	<!-- Course Notes -->
+
 	<form onsubmit="submit_note(event, @id, @Model.CourseInstanceID)" asp-action="ChangeNote" method="POST">
 		<textarea id="note" name="note" rows="10" cols="50">
 			@note
@@ -60,7 +62,7 @@
 					@{
 						var loNote = "";
 						var loID = -1;
-						if (item.Note != null)
+						if (item.Note != null) // If a note exists, update view with existing note
 						{
 							loNote = item.Note.Note;
 							loID = item.Note.LearningOutcomeNoteID;
