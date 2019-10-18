@@ -1,4 +1,6 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿<!-- Kaelin Hoang and Khanhly Nguyen
+	This view represents the table for a selected course's learning outcomes.-->
+@using Microsoft.AspNetCore.Identity
 @using EFGetStarted.AspNetCore.NewDb.Models
 @inject UserManager<IdentityUser> UserManager
 @model CourseInstance
@@ -7,10 +9,11 @@
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <h1>@Model.Dept @Model.Number Learning Outcomes</h1>
 
-<div style="border:3px solid blue">
-	@{ 
+<div>
+	@{
 		var note = "";
 		var id = -1;
 		if (Model.Note != null)
@@ -46,14 +49,28 @@
 		{
 			<tr>
 				<td>
-
 					@Html.DisplayFor(modelItem => item.Name)
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.Description)
 				</td>
 				<td>
+					<!--Notes for each learning outcome-->
 
+					@{
+						var loNote = "";
+						var loID = -1;
+						if (item.Note != null)
+						{
+							loNote = item.Note.Note;
+							loID = item.Note.LearningOutcomeNoteID;
+						}
+					}
+					<form onsubmit="submit_lo_note(event, @loID, @item.LearningOutcomesID)" asp-action="ChangeNote" method="POST">
+						<textarea id="loNote" name="loNote" rows="10" cols="50">@loNote</textarea>
+						<br />
+						<input type="submit">
+					</form>
 				</td>
 			</tr>
 		}
@@ -61,6 +78,7 @@
 </table>
 
 @section Scripts
-{
+	{
 	<script src="~/js/courseNote.js"></script>
+
 }

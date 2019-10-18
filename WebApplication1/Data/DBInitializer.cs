@@ -40,7 +40,6 @@ namespace WebApplication1.Data
             {
                 return;   // DB has been seeded
             }
-
             // Create courses
             var courses = new CourseInstance[]
             {
