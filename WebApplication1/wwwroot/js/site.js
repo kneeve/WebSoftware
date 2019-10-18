@@ -14,15 +14,24 @@ function handleChange(a, id, email, role) {
 		roleCheck = "add";
 	}
 
-	$.ajax({
-		method: "POST",
-		url: "/Roles/AddRole",
-		data: {
-			user_name: email,
-			changeRole: role,
-			add_remove: roleCheck
-		}
-	});
+    $.ajax({
+        method: "POST",
+        url: "/Roles/AddRole",
+        data: {
+            user_name: email,
+            changeRole: role,
+            add_remove: roleCheck
+        }
+    }).done(function (result) {
+        console.log("action taken:" + result)
+    }).fail(function (jqHXR, textStatus, errorThrown) {
+        console.log("failed:");
+        console.log(jqXHR);
+        console.log(textStatus);
+        console.log(errorThrown);
+    }).always(function () {
+        console.log("but I will always do this")
+    });
 };
 
 
