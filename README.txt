@@ -3,6 +3,9 @@ Date:      10/18/2019
 Course:    CS 4540, Web Software Architecture
 Copyright: CS 4540, Kaelin Hoang, Khanhly Nguyen - This work may not be copied for use in Academic Coursework.
 
+Git Repository Link:
+https://github.com/kneeve/WebSoftware
+
 
 Comment to Evaluators:
  - Course and learning outcome notes utilize simple CRUD functionality:
