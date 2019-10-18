@@ -40,10 +40,14 @@ namespace WebApplication1.Data
             {
                 return;   // DB has been seeded
             }
+
+            CourseNoteModel courseNote = new CourseNoteModel();
+            courseNote.Note = "This course has a lot of learning outcomes";
+
             // Create courses
             var courses = new CourseInstance[]
             {
-            new CourseInstance{Dept="CS",Number=4540,Semester="Spring",Year=2019,Description="Web Software Architexture",InstructorEmail="professor_jim@cs.utah.edu"},
+            new CourseInstance{Dept="CS",Number=4540,Semester="Spring",Year=2019,Description="Web Software Architexture",InstructorEmail="professor_jim@cs.utah.edu", Note=courseNote},
             new CourseInstance{Dept="CS",Number=2420,Semester="Spring",Year=2020,Description="Data Structures and Algorithms",InstructorEmail="professor_jim@cs.utah.edu"},
             new CourseInstance{Dept="CS",Number=3500,Semester="Spring",Year=2019,Description="Software Practice",InstructorEmail="professor_jim@cs.utah.edu"},
             new CourseInstance{Dept="CS",Number=2100,Semester="Fall",Year=2019,Description="Discrete Structures",InstructorEmail="professor_mary@cs.utah.edu"},
@@ -64,6 +68,8 @@ namespace WebApplication1.Data
             int ID4400 = courses[4].CourseInstanceID;
             int ID35002 = courses[5].CourseInstanceID;
 
+            LearningOutcomeNoteModel loNote = new LearningOutcomeNoteModel();
+            loNote.Note = "This learning outcome needs to be updated and reviewed again";
             // Create learning outcomes
             var lo = new LearningOutcomes[]
             {
@@ -90,7 +96,7 @@ namespace WebApplication1.Data
             new LearningOutcomes{Name="Os Concepts",Description="construct applications using operating-system concepts (such as processes, threads, signals, virtual memory, I/O)",CourseInstanceID=ID4400},
             new LearningOutcomes{Name="Applications",Description="synthesize operating-system and networking facilities to build concurrent, communicating applications",CourseInstanceID=ID4400},
             new LearningOutcomes{Name="Synchronization",Description="implement reliable concurrent and parallel programs using appropriate synchronization constructs",CourseInstanceID=ID4400},
-            new LearningOutcomes{Name="HTML/CSS",Description="Construct web pages using modern HTML and CSS practices, including modern frameworks.",CourseInstanceID=ID4540},
+            new LearningOutcomes{Name="HTML/CSS",Description="Construct web pages using modern HTML and CSS practices, including modern frameworks.",CourseInstanceID=ID4540,Note=loNote},
             new LearningOutcomes{Name="Accessability",Description="Define accessibility and utilize techniques to create accessible web pages.",CourseInstanceID=ID4540},
             new LearningOutcomes{Name="MVC",Description="Outline and utilize MVC technologies across the “full-stack” of web design (including front-end, back-end, and databases) to create interesting web applications. Deploy an application to a “Cloud” provider.",CourseInstanceID=ID4540},
             new LearningOutcomes{Name="Security",Description="Describe the browser security model and HTTP; utilize techniques for data validation, secure session communication, cookies, single sign-on, and separate roles.  ",CourseInstanceID=ID4540},
